@@ -7,7 +7,7 @@ interface UserState {
   error: string;
   count: number;
 }
-const initialState = {
+const initialState: UserState = {
   users: [],
   isLoading: false,
   error: '',
