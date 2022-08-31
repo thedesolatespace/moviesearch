@@ -1,17 +1,34 @@
-import React from 'react';
-import { useAppDispatch, useAppSelector } from './hooks/redux';
-import { userSlice } from './store/reducers/UserSlice';
+import React, { Fragment, useState } from 'react';
+import { Search } from './components/Input';
+import { MoviesList } from './components/MoviesList';
+import { useGetSearchResultPageQuery } from './store/services/MovieAPI';
 
 function App() {
-  const { count } = useAppSelector((state) => state.userReducer);
-  const { increment } = userSlice.actions;
-  const dispatch = useAppDispatch();
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={() => dispatch(increment(1))}>increment</button>
-    </div>
-  );
+  const [search, setSearch] = useState('');
+
+  const { data, isLoading } = useGetSearchResultPageQuery(search);
+
+  const handleSearch = (value: string) => {
+    setSearch(value);
+  };
+
+  if (isLoading) {
+    return <h1>loading</h1>;
+  }
+  if (data?.results) {
+    return (
+      <Fragment>
+        <Search handleSearch={handleSearch} />
+        {data.results.length > 0 ? (
+          <MoviesList results={data.results} />
+        ) : (
+          <h1>Nothing found</h1>
+        )}
+      </Fragment>
+    );
+  } else {
+    return <h1>lol</h1>;
+  }
 }
 
 export default App;
