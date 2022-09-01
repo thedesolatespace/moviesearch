@@ -11,8 +11,9 @@ export interface MovieDetails {
 
 export interface StarterPage {
   page?: number;
-  results: MovieDetails[];
+  results?: MovieDetails[];
   total_pages?: number;
+  total_results?: number;
 }
 
 export const movieAPI = createApi({

@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
 
 export const StyledMoviePage = styled.div`
+  padding: 20px;
   margin: 0 auto;
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
-  //gap: 10px;
-  justify-content: space-between;
+  gap: 10%;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-`;
-export const StyledPoster = styled.div`
-  width: 200px;
-  height: 300px;
+  max-width: 900px;
 `;

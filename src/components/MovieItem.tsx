@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ItemDescription } from './ItemDescription';
-import { StyledMovieItem, StyledMoviePoster } from './MovieItem.styles';
+import { StyledMovieItem } from './MovieItem.styles';
+import { MoviePoster } from './MoviePoster';
 
 export interface MovieInterface {
   imgurl?: string;
   title?: string;
   rating?: number;
-  releaseDate: string | number | Date;
+  releaseDate?: string | number | Date;
   movieID?: number;
+  overview?: string;
 }
 
 export const MovieItem = ({
@@ -20,10 +22,7 @@ export const MovieItem = ({
   return (
     <Link to={`/${movieID}`} state={{ title: title }}>
       <StyledMovieItem>
-        <StyledMoviePoster
-          src={`https://image.tmdb.org/t/p/original${imgurl}`}
-          alt={title}
-        />
+        <MoviePoster imgurl={imgurl} title={title} />
         <ItemDescription
           title={title}
           rating={rating}

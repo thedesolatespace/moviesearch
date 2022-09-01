@@ -1,18 +1,24 @@
 import { Input } from '@mui/material';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 
 export const Search = ({
-  handleSearch,
+  setSearch,
 }: {
-  handleSearch: (value: string) => void;
+  setSearch: Dispatch<SetStateAction<string>>;
 }) => {
-  const InputHandler = (
-    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
-    handleSearch(e.target.value);
+  const [value, setValue] = useState('');
+
+  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    setSearch(e.target.value);
   };
 
   return (
-    <Input onChange={(e) => InputHandler(e)} placeholder="Search by title..." />
+    <Input
+      sx={{ marginBottom: '20px', minWidth: '200px' }}
+      value={value}
+      onChange={inputHandler}
+      placeholder="Search by title..."
+    />
   );
 };

@@ -14,9 +14,7 @@ export const ItemDescription = ({
   return (
     <StyledItemDescription>
       <StyledReleaseDate>
-        {new Date(
-          releaseDate !== 'null' ? releaseDate : 'Unknown'
-        ).getFullYear()}
+        {releaseDate ? new Date(releaseDate).getFullYear() : 'Unknown'}
       </StyledReleaseDate>
       <StyledItemTitle>{title}</StyledItemTitle>
       <StyleditemRating>{rating}</StyleditemRating>

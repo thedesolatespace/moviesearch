@@ -7,7 +7,3 @@ export const StyledMovieItem = styled.div`
   width: 200px;
   margin-bottom: 1rem;
 `;
-export const StyledMoviePoster = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`;
